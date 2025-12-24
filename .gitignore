@@ -12,6 +12,9 @@ logs/
 # thumbnails/audible 画像は除外しない
 !thumbnails/audible/*.jpg
 !thumbnails/audible/*.png
+
+# thumbnails/note 画像は除外しない
+!thumbnails/note.png
 *.html
 
 # 画像フォルダの構造は残す（.gitkeeepのみ含める）
