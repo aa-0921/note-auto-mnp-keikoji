@@ -13,8 +13,10 @@ logs/
 !thumbnails/audible/*.jpg
 !thumbnails/audible/*.png
 
-# thumbnails/note 画像は除外しない
-!thumbnails/note.png
+# thumbnails/ ディレクトリ内の画像は除外しない
+!thumbnails/*.png
+!thumbnails/*.jpg
+!thumbnails/*.jpeg
 *.html
 
 # 画像フォルダの構造は残す（.gitkeeepのみ含める）
