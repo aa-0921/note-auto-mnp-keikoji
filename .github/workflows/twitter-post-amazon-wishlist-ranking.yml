@@ -1,8 +1,8 @@
-name: Twitter Post Amazon Ranking
+name: Twitter Post Amazon Wishlist Ranking
 
 on:
   schedule:
-    - cron: '0 1,7,13,19 * * *'  # 1時、7時、13時、19時（UTC）、6時間おきに4回実行
+    - cron: '0 4,10,16,22 * * *'  # 4時、10時、16時、22時（UTC）、6時間おきに4回実行、交互実行
   workflow_dispatch:
     inputs:
       dryrun:
@@ -16,7 +16,7 @@ jobs:
     permissions:
       contents: read
     concurrency:
-      group: twitter-post-amazon-ranking
+      group: twitter-post-amazon-wishlist-ranking
       cancel-in-progress: false
     env:
       TZ: Asia/Tokyo
@@ -79,7 +79,7 @@ jobs:
           TWITTER_ACCESS_TOKEN_SECRET: ${{ secrets.TWITTER_ACCESS_TOKEN_SECRET }}
           TWITTER_BEARER_TOKEN: ${{ secrets.TWITTER_BEARER_TOKEN }}
         run: |
-          node scripts/twitterPostAmazonRanking.js
+          node scripts/twitterPostAmazonWishlistRanking.js
 
       - name: Run script (manual)
         if: ${{ github.event_name == 'workflow_dispatch' }}
@@ -92,9 +92,7 @@ jobs:
         run: |
           if [ "${{ github.event.inputs.dryrun }}" = "true" ]; then
             echo "Run in dryrun mode"
-            node scripts/twitterPostAmazonRanking.js --dryrun
+            node scripts/twitterPostAmazonWishlistRanking.js --dryrun
           else
-            node scripts/twitterPostAmazonRanking.js
+            node scripts/twitterPostAmazonWishlistRanking.js
           fi
-
-
